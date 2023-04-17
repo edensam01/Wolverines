@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime, timedelta
 import csv
+import yfinance as yf
 
 def getCompanyData(url):
     response = requests.get(url)
@@ -30,6 +32,28 @@ def getTicker(company_name):
 
     return ticker
 
+def startAndEnd(year, month, day):
+    given_date = datetime(year, month, day)
+
+    start = given_date - timedelta(days=26)
+    end = given_date - timedelta(days=1)
+
+    start_str = start.strftime("%Y-%m-%d")
+    end_str = end.strftime("%Y-%m-%d")
+
+    return (start_str, end_str)
+
+def getStockData(company_ticker, start, end):
+    data = yf.download(company_ticker, start=start, end=end)
+
+    l = data.values.tolist()
+
+    l2 = []
+    for i in l:
+        l2.append([round(i[0], 2), round(i[-2], 2)])
+
+    return l2
+
 def main():
     #fortune 500 data link
     url = 'https://www.zyxware.com/articles/4344/list-of-fortune-500-companies-and-their-websites'
@@ -39,7 +63,7 @@ def main():
 
     #getting stock ticker
     company_ticker = getTicker(company_name)
-
+    print(company_ticker)
 
 
 if __name__ == "__main__":
