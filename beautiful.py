@@ -11,9 +11,8 @@ rows = table.find_all('tr')
 
 for row in rows:
     cols = row.find_all('td')
-    if len(cols) == 3:
-        company_name = cols[1].get_text()
-        website = cols[2].get_text()
-        print(f"Company name: {company_name}")
-        print(f"Website: {website}")
-        break
+    company_name = cols[1].get_text()
+    website = cols[2].get_text()
+    print(f"Company name: {company_name}")
+    print(f"Website: {website}")
+    break
