@@ -7,7 +7,7 @@ for row in data:
     cur.execute("INSERT INTO Stock (date, price) VALUES (?, ?)", row)
 
 for row in data:
-    cur.execute("INSERT INTO SEO_data (date, traffic) VALUES (?, ?)", row)
+    cur.execute("INSERT INTO SEO_data (date, number_of_visits, timeSpent) VALUES (?, ?, ?)", row)
 
 cur.execute('SELECT COUNT(*) as row_count FROM Stock_SEO')
 row = cur.fetchone()
