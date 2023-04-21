@@ -27,7 +27,7 @@ def main():
     #renaming the column to cases for simplicity
     df = df.rename(columns={'cases_per_day': 'cases'})
 
-    Information = 'When the mean is significantly different from the median, it usually indicates that there are some extreme values (outliers) in the data that are pulling the mean in one direction or the other.\n'
+    Information = 'When the mean is significantly different from the median, it usually indicates that there are some extreme values (outliers) in the data that are pulling the mean in one direction or the other.\n\n'
 
     write_to_file(f, Information)
 
@@ -47,7 +47,7 @@ def main():
     median_cases = round(df['cases'].median(), 2)
 
     #writing calculations to file
-    temp = f'Average Cases: {average_cases} | Median Cases: {median_cases} \n'
+    temp = f'Average Cases: {average_cases} | Median Cases: {median_cases} \n\n'
     write_to_file(f, temp)
 
     Information = "From the data, we can conclude that there aren't many outliers in the price, but there are a lot of outliers in the number of cases per day. This would mean that to find correlations, it woul be better to look at larger datasets\n"

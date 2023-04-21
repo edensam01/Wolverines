@@ -1,0 +1,6 @@
+When the mean is significantly different from the median, it usually indicates that there are some extreme values (outliers) in the data that are pulling the mean in one direction or the other.
+
+Average Price: 125.28 | Median Price: 125.15 
+Average Cases: 47987.61 | Median Cases: 40788.5 
+
+From the data, we can conclude that there aren't many outliers in the price, but there are a lot of outliers in the number of cases per day. This would mean that to find correlations, it woul be better to look at larger datasets

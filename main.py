@@ -20,9 +20,9 @@ from covid19dh import covid19
 '''
 def clean_databases(cur, conn):
     cur.execute('DROP TABLE IF EXISTS Stock')
-    cur.execute('CREATE TABLE Stock (date DATE PRIMARY KEY, price REAL)')
+    cur.execute('CREATE TABLE Stock (id INTEGER PRIMARY KEY, date DATE, price REAL)')
     cur.execute('DROP TABLE IF EXISTS Covid')
-    cur.execute('CREATE TABLE Covid (date DATE PRIMARY KEY, cases REAL)')
+    cur.execute('CREATE TABLE Covid (id INTEGER PRIMARY KEY, date DATE, cases REAL)')
     cur.execute('DROP TABLE IF EXISTS Stock_Covid')
     conn.commit()
 
@@ -152,7 +152,7 @@ def main():
     print("Inserted Covid Data!\n")
 
     cur.execute('DROP TABLE IF EXISTS Stock_Covid')
-    cur.execute('CREATE TABLE Stock_Covid AS SELECT Stock.date, Stock.price, Covid.cases FROM Stock JOIN Covid ON Stock.date = Covid.date')
+    cur.execute('CREATE TABLE Stock_Covid AS SELECT Stock.id, Stock.date, Stock.price, Covid.cases FROM Stock JOIN Covid ON Stock.id = Covid.id')
     print("Joined Tables Succesfully!\n")
 
 if __name__ == "__main__":
