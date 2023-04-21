@@ -3,7 +3,6 @@ import sqlite3
 conn = sqlite3.connect('Walmart.db')
 cur = conn.cursor()
 
-
 cur.execute('DROP TABLE IF EXISTS Stock')
 cur.execute('DROP TABLE IF EXISTS SEO_data')
 cur.execute('CREATE TABLE Stock (date DATE PRIMARY KEY, price REAL)')
@@ -19,7 +18,6 @@ for row in data:
 cur.execute('SELECT MIN(date) FROM Stock_SEO')
 result = cur.fetchone()
 min_value = result[0] 
-
 
 conn.commit()
 conn.close()

@@ -1,13 +1,9 @@
-import csv
+import yfinance as yf
 
-company_name = "Walmart"
+# Replace "AAPL" with the stock symbol of your choice
+ticker = yf.Ticker("AAPL")
 
-f = open('stock_tickers.csv', 'r')
-k = csv.reader(f)
-l = []
-for i in k:
-    if company_name in i[1]:
-        ticker = i[0]
-        break
+# Retrieve historical data with non-trading days included
+hist_data = ticker.history(period="max", interval="1d", auto_adjust=False)
 
-print(ticker)
+print(hist_data)
